@@ -14,8 +14,12 @@ export const router = express.Router();
 
 
 router.delete('/:id',  async (req, res) => {
-
-
+    if (!req.params.id?.trim()){
+        res.status(400).json("invalid id");
+        return;
+    }
+    const result = await pool.query('DELETE FROM course WHERE id = ?', [req.params.id])
+    res.sendStatus(result.affectedRows ? 204 : 404);
 });
 
 router.post('/',  async (req, res) => {
