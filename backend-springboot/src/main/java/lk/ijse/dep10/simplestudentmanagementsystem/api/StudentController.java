@@ -31,6 +31,7 @@ public class StudentController {
     }
 
     @DeleteMapping("/{customerId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteStudent(@PathVariable("customerId") Integer studentId) throws Exception {
         studentBO.deleteStudentById(studentId);
     }
