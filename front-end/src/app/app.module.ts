@@ -5,6 +5,24 @@ import { AppComponent } from './app.component';
 import { ManageStudentComponent } from './view/manage-student/manage-student.component';
 import { ManageCoursesComponent } from './view/manage-courses/manage-courses.component';
 import { HomeComponent } from './view/home/home.component';
+import {RouterModule, Routes} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+
+const routs:Routes = [
+  {
+    path:'',
+    component:HomeComponent
+  },
+  {
+    path:'student',
+    component:ManageStudentComponent
+  },
+  {
+    path:'course',
+    component:ManageCoursesComponent
+  }
+  ];
 
 @NgModule({
   declarations: [
@@ -14,7 +32,10 @@ import { HomeComponent } from './view/home/home.component';
     HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routs),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,9 @@
-<div class="d-flex">
+<div id="main" class="d-flex" style="background-color: aqua">
   <div id="main-div" class="d-flex flex-column" style="border-right: 1px solid black">
-    <button type="button" class="btn btn-light">Manage Student</button>
-    <button type="button" class="btn btn-light">Manage Course</button>
+    <button type="button" class="btn btn-light" routerLinkActive="active" routerLink="/student">Manage Student</button>
+    <button type="button" class="btn btn-light" routerLinkActive="active" routerLink="/course">Manage Course</button>
   </div>
-
-  <app-manage-student></app-manage-student>
+  <router-outlet></router-outlet>
 </div>
 
 

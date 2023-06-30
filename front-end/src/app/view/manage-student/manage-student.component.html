@@ -1,16 +1,31 @@
-<div class="d-flex flex-column">
+<div>
   <div>
-    <label class="student-label" style="margin: 10px">Name :</label>
-    <input placeholder="Enter the name" style="text-align: center">
+    <div id="title" style="text-align: center">Manage Student</div>
   </div>
-  <div>
-    <label class="student-label" style="margin: 10px">Address :</label>
-    <input placeholder="Enter the address" style="text-align: center">
-  </div>
-  <div>
-    <button type="button" class="btn btn-primary" style="margin-left: 95px">Save</button>
-  </div>
-</div>
+  <form>
+    <div class="d-flex flex-column">
+      <div>
+        <label class="student-label" style="margin: 10px">Name :</label>
+        <input #txtName ngModel #nameModel="ngModel"
+               class="form-control" type="text" placeholder="Enter the name" style="text-align: center"
+               [class.is-invalid]="nameModel.dirty && nameModel.invalid"
+               pattern="^[A-Za-z ]+$" minlength="3">
+        <div class="invalid-feedback">
+          Customer name invalid!
+        </div>
+      </div>
+      <div>
+        <label class="student-label" style="margin: 10px">Address :</label>
+        <input #txtAddress ngModel #addressModel="ngModel" minlength="5" class="form-control" type="text"
+               placeholder="Enter the address" style="text-align: center"
+               [class.is-invalid]="addressModel.dirty && addressModel.invalid">
+        <div class="invalid-feedback">Address is invalid</div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary" (click)="saveStudent(txtName,txtAddress)">Save</button>
+      </div>
+    </div>
+  </form>
 
 <div class="p-2">
   <table class="table table-bordered mt-3 table-hover">
@@ -22,11 +37,11 @@
       <th class="text-center">ACTION</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let student of studentList">
     <tr>
-      <td class="text-center">1</td>
-      <td class="text-center">Buddhi</td>
-      <td class="text-center">Hungama</td>
+      <td class="text-center">{{student.id}}</td>
+      <td class="text-center">{{student.name}}</td>
+      <td class="text-center">{{student.address}}</td>
       <td>
         <div class="d-flex gap-4 justify-content-center">
           <div class="edit" title="Edit">
@@ -38,7 +53,7 @@
                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
             </svg>
           </div>
-          <div class="delete" title="Delete">
+          <div class="delete" title="Delete" (click)="deleteStudent(student.id)">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                  class="bi bi-trash3-fill" viewBox="0 0 16 16">
               <path
@@ -50,4 +65,5 @@
     </tr>
     </tbody>
   </table>
+</div>
 </div>

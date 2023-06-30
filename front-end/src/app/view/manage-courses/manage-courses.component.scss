@@ -1,0 +1,30 @@
+.course-label{
+  width: 95px;
+}
+
+div{
+  margin: 5px;
+}
+
+#title{
+  font-size: 30px;
+  font-weight: bold;
+}
+list{
+  margin: 10px;
+}
+input{
+  text-align: center;
+}
+
+.edit, .delete {
+  cursor: pointer;
+}
+
+.edit:hover {
+  color: green;
+}
+
+.delete:hover {
+  color: red;
+}

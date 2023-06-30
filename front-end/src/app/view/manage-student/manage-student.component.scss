@@ -1,3 +1,24 @@
 .student-label{
   width: 75px;
 }
+
+div{
+  margin: 5px;
+}
+
+#title{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.edit, .delete {
+  cursor: pointer;
+}
+
+.edit:hover {
+  color: green;
+}
+
+.delete:hover {
+  color: red;
+}
